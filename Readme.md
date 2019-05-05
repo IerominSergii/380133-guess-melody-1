@@ -1,7 +1,7 @@
 # Учебный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Sergii Yeromin](https://up.htmlacademy.ru/react/1/user/380133).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Кашапов](https://htmlacademy.ru/profile/ksneo).
 
 ---
 
