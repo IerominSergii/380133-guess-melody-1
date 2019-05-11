@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
-
-const startGame = () => {};
+import {questions} from "./mocks/questions";
 
 const init = () => {
   const settings = {
@@ -14,7 +13,7 @@ const init = () => {
       <App
         gameTime={settings.gameTime}
         errorCount={settings.errorCount}
-        onClick={startGame}
+        questions={questions}
       />,
       document.querySelector(`.main`)
   );
