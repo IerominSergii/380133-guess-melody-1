@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const WelcomeScreen = (props) => {
-  const {time, errorCount, onClick} = props;
+  const {time, errorCount, startGame} = props;
 
   return (
     <section className="welcome">
@@ -14,7 +14,7 @@ const WelcomeScreen = (props) => {
           height="83"
         />
       </div>
-      <button className="welcome__button" onClick={onClick}>
+      <button className="welcome__button" onClick={startGame}>
         <span className="visually-hidden">Начать игру</span>
       </button>
       <h2 className="welcome__rules-title">Правила игры</h2>
@@ -33,5 +33,5 @@ export default WelcomeScreen;
 WelcomeScreen.propTypes = {
   time: PropTypes.number.isRequired,
   errorCount: PropTypes.number.isRequired,
-  onClick: PropTypes.func
+  startGame: PropTypes.func
 };
