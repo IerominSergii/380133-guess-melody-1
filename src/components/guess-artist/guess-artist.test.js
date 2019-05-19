@@ -19,7 +19,11 @@ it(`should render GuessArtist properly`, () => {
   };
 
   const componentGuessArtist = renderer
-    .create(<GuessArtist question={question} onAnswer={onAnswer} />)
+    .create(<GuessArtist question={question} onAnswer={onAnswer} />, {
+      createNodeMock: () => {
+        return {};
+      }
+    })
     .toJSON();
 
   expect(componentGuessArtist).toMatchSnapshot();

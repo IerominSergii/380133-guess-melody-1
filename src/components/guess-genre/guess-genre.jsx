@@ -1,19 +1,22 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import AudioPlayer from "../audio-player/audio-player.jsx";
 
 export default class GuessGenre extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {value: ``};
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      activePlayer: -1
+    };
+    this._handleChange = this._handleChange.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
-  handleChange(evt) {
+  _handleChange(evt) {
     this.setState({value: evt.target.value});
   }
 
-  handleSubmit(evt) {
+  _handleSubmit(evt) {
     evt.preventDefault();
     this.props.onAnswer(this.state.value);
   }
@@ -63,17 +66,20 @@ export default class GuessGenre extends PureComponent {
 
         <section className="game__screen">
           <h2 className="game__title">{`Выберите ${genre} треки`}</h2>
-          <form className="game__tracks" onSubmit={this.handleSubmit}>
+          <form className="game__tracks" onSubmit={this._handleSubmit}>
             {answers.map((track, index) => {
               return (
                 <div key={`${track.genre}-${index}`} className="track">
-                  <button
-                    className="track__button track__button--play"
-                    type="button"
+                  <AudioPlayer
+                    src={track.src}
+                    isPlaying={index === this.state.activePlayer}
+                    onPlayButtonClick={() =>
+                      this.setState({
+                        activePlayer:
+                          this.state.activePlayer === index ? -1 : index
+                      })
+                    }
                   />
-                  <div className="track__status">
-                    <audio src={track.src} />
-                  </div>
                   <div className="game__answer">
                     <input
                       className="game__input visually-hidden"
@@ -81,7 +87,7 @@ export default class GuessGenre extends PureComponent {
                       name="answer"
                       value={track.genre}
                       id={`answer-${index + 1}`}
-                      onChange={this.handleChange}
+                      onChange={this._handleChange}
                     />
                     <label
                       className="game__check"

@@ -3,32 +3,35 @@ import renderer from "react-test-renderer";
 import GuessGenre from "./guess-genre";
 
 it(`should render GuessGenre properly`, () => {
-  const onAnswer = jest.fn();
   const question = {
     type: `genre`,
     genre: `rock`,
     answers: [
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `path.mp3`,
         genre: `rock`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `path.mp3`,
         genre: `pop`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `path.mp3`,
         genre: `jazz`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `path.mp3`,
         genre: `rock`
       }
     ]
   };
 
   const componentGuessGenre = renderer
-    .create(<GuessGenre question={question} onAnswer={onAnswer} />)
+    .create(<GuessGenre question={question} onAnswer={jest.fn()} />, {
+      createNodeMock: () => {
+        return {};
+      }
+    })
     .toJSON();
 
   expect(componentGuessGenre).toMatchSnapshot();

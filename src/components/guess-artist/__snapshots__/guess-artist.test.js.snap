@@ -23,18 +23,18 @@ exports[`should render GuessArtist properly 1`] = `
       />
     </a>
     &lt;svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="timer"
-          viewBox="0 0 780 780"
-        &gt;
-          &lt;circle
-            className="timer__line"
-            cx="390"
-            cy="390"
-            r="370"
-            style="filter: url(#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"
-          /&gt;
-        &lt;/svg&gt;
+        xmlns="http://www.w3.org/2000/svg"
+        className="timer"
+        viewBox="0 0 780 780"
+      &gt;
+        &lt;circle
+          className="timer__line"
+          cx="390"
+          cy="390"
+          r="370"
+          style="filter: url(#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"
+        /&gt;
+      &lt;/svg&gt;
     <div
       className="timer__value"
       xmlns="http://www.w3.org/1999/xhtml"
@@ -82,9 +82,15 @@ exports[`should render GuessArtist properly 1`] = `
     >
       <button
         className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
-      <audio />
+      <div
+        className="track__status"
+      >
+        <audio />
+      </div>
     </div>
     <form
       className="game__artist"
